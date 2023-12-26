@@ -5,7 +5,7 @@ import { LoginButton } from "../LoginButton"
 
 export const Navbar = () => {
   return (
-    <nav className="bg-slate-600">
+    <nav className="fixed top-8 w-full h-20 ">
       <div className="wrapper">
         <div className="flex items-center justify-between">
           <Image src="/images/logo.png" width={97} height={80} alt="logo travel pulse" />
