@@ -1,14 +1,27 @@
+'use client'
+import { useRef } from 'react';
 import { CardList } from "./CardList"
 import { BaseCardsContainer } from "./ui/BaseCardsContainer"
+import { MotionControlButtons } from './MotionControlButtons';
 
 export const TopExperiencies = () => {
-  return (
-    <BaseCardsContainer
-    title="Top Locations to Explore"
-    description="Here are some of the most visited places in 2023"
-    actionComponent={<button>ver mas</button>}
-    content={ <CardList cards={[{id: 1, title: 'hola'}, {id: 2, title: 'hola'}, {id: 3, title: 'hola'}]}  /> }
-  />
 
-  )
+    const sliderContentRef = useRef(null);
+
+    const moveSliderContent = (direction) => {
+        if (direction === 'right') {
+            sliderContentRef.current.scrollLeft += 350;
+        } else {
+            sliderContentRef.current.scrollLeft -= 350;
+        }
+    };
+    return (
+        <BaseCardsContainer
+            title="Top Locations to Explore"
+            description="Here are some of the most visited places in 2023"
+            actionComponent={<MotionControlButtons />}
+            content={<CardList sliderContentRef={sliderContentRef} cards={[{ id: 1, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }, { id: 2, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }, { id: 3, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }, { id: 4, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }, { id: 5, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }, { id: 6, place: 'croatia', experienceTitle: 'motocros', image: '/images/card-image.jpeg' }]} />}
+        />
+
+    )
 }

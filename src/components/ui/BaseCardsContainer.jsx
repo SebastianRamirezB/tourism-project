@@ -18,7 +18,7 @@ export const BaseCardsContainer = ({ title, description, actionComponent, conten
                             { actionComponent }
                         </div>
                     </div>
-                    <div className="flex gap-6">
+                    <div>
                         { content }
                     </div>
                 </div>
