@@ -14,6 +14,9 @@ module.exports = {
       primary: '#4169E1',
       secondary: '#404040',
       disabled: '#CDCCCC'
+    },
+    gridTemplateColumns: {
+      'auto': 'repeat(auto-fit, minmax(386px, 1fr))'
     }
     },
     
