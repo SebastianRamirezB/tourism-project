@@ -12,7 +12,7 @@ export const Navbar = () => {
           <Image src="/images/logo.png" width={97} height={80} alt="logo travel pulse" />
         </Link>
           <ul className="text-white text-2xl font-extrabold flex gap-16">
-            <Link href="/experiences" >
+            <Link href="/experiencias" >
               Experiencias
             </Link>
             <Link href="#" >

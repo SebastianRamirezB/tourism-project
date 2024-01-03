@@ -2,7 +2,7 @@ import { ComponentSelect } from "@/components/ComponentSelect";
 import { SearchBar } from "@/components/SearchBar";
 import { GridCards } from "@/components/ui/GridCards";
 
-export default function Experiences() {
+export default function Experiencias() {
     return (
         <main className="flex flex-col gap-36">
             <section>
