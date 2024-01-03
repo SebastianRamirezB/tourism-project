@@ -16,7 +16,7 @@ module.exports = {
       disabled: '#CDCCCC'
     },
     gridTemplateColumns: {
-      'auto': 'repeat(auto-fit, minmax(386px, 1fr))'
+      'auto': 'repeat(auto-fit, minmax(386px, 386px))'
     }
     },
     

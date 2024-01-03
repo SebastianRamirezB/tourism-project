@@ -5,7 +5,7 @@ import { LoginButton } from "../LoginButton"
 
 export const Navbar = () => {
   return (
-    <nav className="fixed top-8 w-full h-20 ">
+    <nav className="fixed top-8 w-full h-20 bg-black ">
       <div className="wrapper">
         <div className="flex items-center justify-between">
         <Link href="/">
