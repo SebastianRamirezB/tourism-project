@@ -1,4 +1,5 @@
 import { ExperienceGallery } from "@/components/ExperienceGallery";
+import { ExperienceSummary } from "@/components/ExperienceSummary";
 
 export default function Experiencia({ params }) {
   return (
@@ -9,7 +10,13 @@ export default function Experiencia({ params }) {
             Senderismo y camiantas Ecologicas en naturaleza
           </h1>
           <ExperienceGallery />
-          <section > 
+          <section className="grid grid-cols-[60%_40%] justify-between items-start mt-24" >
+            <div>
+              <ExperienceSummary />
+            </div> 
+            <div>
+              
+            </div>
           </section>
         </div>
       </section>
