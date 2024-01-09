@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+:root {
+  --primary-color: #4169E1;
+}
 
 body {
 

@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import { LoginButton } from "../LoginButton"
+import { LoginButton } from "../../LoginButton"
+
+import './styles.css';
 
 
 export const Navbar = () => {
   return (
-    <nav className="fixed top-8 w-full h-20 bg-black ">
+    <nav className="nav-animation fixed top-0 w-full h-20 ">
       <div className="wrapper">
         <div className="flex items-center justify-between">
         <Link href="/">

@@ -1,5 +1,5 @@
 import { Urbanist } from 'next/font/google'
-import { Navbar } from '@/components/ui/Navbar'
+import { Navbar } from '@/components/ui/navbar/Navbar'
 
 import './globals.css'
 
