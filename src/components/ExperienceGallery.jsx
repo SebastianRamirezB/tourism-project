@@ -1,5 +1,5 @@
 export const ExperienceGallery = () => {
-    return (
+  return (
         <section className="h-[500px] grid grid-cols-4 grid-rows-2 gap-2">
             <div className="row-span-2">
                 <img
@@ -37,5 +37,5 @@ export const ExperienceGallery = () => {
                 />
             </div>
         </section>
-    );
+  );
 };

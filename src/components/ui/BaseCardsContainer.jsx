@@ -1,8 +1,5 @@
-
-
-
 export const BaseCardsContainer = ({ title, description, actionComponent, content }) => {
-    return (
+  return (
         <section className="w-full" >
             <div className="wrapper">
                 <div className="flex flex-col gap-20">
@@ -24,5 +21,5 @@ export const BaseCardsContainer = ({ title, description, actionComponent, conten
                 </div>
             </div>
         </section>
-    )
-}
+  );
+};

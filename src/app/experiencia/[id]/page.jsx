@@ -1,9 +1,9 @@
-import { ExperienceGallery } from "@/components/ExperienceGallery";
-import { ExperienceReservation } from "@/components/ExperienceReservation";
-import { ExperienceServices } from "@/components/ExperienceServices";
-import { ExperienceSummary } from "@/components/ExperienceSummary";
+import { ExperienceGallery } from '@/components/ExperienceGallery';
+import { ExperienceReservation } from '@/components/ExperienceReservation';
+import { ExperienceServices } from '@/components/ExperienceServices';
+import { ExperienceSummary } from '@/components/ExperienceSummary';
 
-export default function Experiencia({ params }) {
+export default function Experiencia ({ params }) {
   return (
     <main className="mt-32">
       <section>
@@ -16,7 +16,7 @@ export default function Experiencia({ params }) {
             <div className="flex flex-col gap-6">
               <ExperienceSummary />
               <ExperienceServices />
-            </div> 
+            </div>
             <div className="place-self-end">
               <ExperienceReservation />
             </div>
@@ -25,5 +25,5 @@ export default function Experiencia({ params }) {
       </section>
     </main>
 
-  )
+  );
 }

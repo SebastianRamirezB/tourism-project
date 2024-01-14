@@ -1,4 +1,4 @@
-import { ExperienceServicesCard } from "./ExperienceServicesCard"
+import { ExperienceServicesCard } from './ExperienceServicesCard';
 
 export const ExperienceServices = () => {
   return (
@@ -11,5 +11,5 @@ export const ExperienceServices = () => {
 
         </div>
     </section>
-  )
-}
+  );
+};

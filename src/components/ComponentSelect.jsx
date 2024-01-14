@@ -1,10 +1,10 @@
-'use client'
+'use client';
 import { useState } from 'react';
 
 export const ComponentSelect = () => {
-    const [selectedFruit, setSelectedFruit] = useState('orange');
+  const [selectedFruit, setSelectedFruit] = useState('orange');
 
-    return (
+  return (
         <label>
             <h2 className="text-2xl font-medium mb-4">Filter by type of place</h2>
             <div className="flex items-center justify-between border w-full  h-[78px]  px-11 border-disabled mt-1 rounded-[80px]" htmlFor="">
@@ -21,5 +21,5 @@ export const ComponentSelect = () => {
             </div>
 
         </label>
-    );
-}
+  );
+};

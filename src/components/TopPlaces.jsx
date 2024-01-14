@@ -1,10 +1,8 @@
-import { CardList } from "./CardList"
-import { RedirectButton } from "./RedirectButton"
-import { BaseCardsContainer } from "./ui/BaseCardsContainer"
-
+import { CardList } from './CardList';
+import { RedirectButton } from './RedirectButton';
+import { BaseCardsContainer } from './ui/BaseCardsContainer';
 
 export const TopPlaces = () => {
-
   return (
 
     <BaseCardsContainer
@@ -14,6 +12,5 @@ export const TopPlaces = () => {
       content={<CardList cards={[{ id: 1, place: 'croatia', image: '/images/card-image.jpeg' }, { id: 2, place: 'croatia', image: '/images/card-image.jpeg' }, { id: 3, place: 'croatia', image: '/images/card-image.jpeg' }]} />}
     />
 
-  )
-}
-
+  );
+};

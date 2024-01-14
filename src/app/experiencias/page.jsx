@@ -1,9 +1,9 @@
-import { ComponentSelect } from "@/components/ComponentSelect";
-import { SearchBar } from "@/components/SearchBar";
-import { GridCards } from "@/components/ui/GridCards";
+import { ComponentSelect } from '@/components/ComponentSelect';
+import { SearchBar } from '@/components/SearchBar';
+import { GridCards } from '@/components/ui/GridCards';
 
-export default function Experiencias() {
-    return (
+export default function Experiencias () {
+  return (
         <main className="flex flex-col gap-36">
             <section>
                 <div className="wrapper">
@@ -20,5 +20,5 @@ export default function Experiencias() {
                 </div>
             </section>
         </main>
-    )
+  );
 }

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Card } from '../Card'
+import { Card } from '../Card';
 
 export const GridCards = () => {
   return (
@@ -16,5 +15,5 @@ export const GridCards = () => {
         <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
 
     </div>
-  )
-}
+  );
+};

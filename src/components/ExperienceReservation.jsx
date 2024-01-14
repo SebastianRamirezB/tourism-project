@@ -1,8 +1,8 @@
-import { ReservationForm } from "./ReservationForm";
-import { SocialLinkButton } from "./SocialLinkButton";
+import { ReservationForm } from './ReservationForm';
+import { SocialLinkButton } from './SocialLinkButton';
 
 export const ExperienceReservation = () => {
-    return (
+  return (
         <aside className="w-96 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-2xl p-4 flex flex-col gap-4">
             <ReservationForm />
             <div className="w-full border-b border-primary"></div>
@@ -19,5 +19,5 @@ export const ExperienceReservation = () => {
                 </div>
             </footer>
         </aside>
-    );
+  );
 };

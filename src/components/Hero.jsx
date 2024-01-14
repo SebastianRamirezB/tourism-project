@@ -1,8 +1,5 @@
-
 export const Hero = ({ title, heightSize }) => {
-
   const height = heightSize ? `h-[${heightSize}px]` : 'h-screen';
-
 
   return (
     <section className={`${height} w-full bg-background-hero bg-no-repeat bg-cover`} >
@@ -10,5 +7,5 @@ export const Hero = ({ title, heightSize }) => {
         <h1 className="text-white text-7xl text-center font-extrabold">{title}</h1>
       </div>
     </section>
-  )
-}
+  );
+};
