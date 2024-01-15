@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Card = ({ image, experienceTitle, place }) => {
+export const CarouselCard = ({ image, experienceTitle, place }) => {
   return (
         <article className="min-w-[386px] max-w-[386px] h-[523px]">
             <Link href="/experiencia/12" className=" flex flex-col gap-6">

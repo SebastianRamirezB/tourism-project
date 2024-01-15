@@ -1,19 +1,17 @@
-import { Card } from '../Card';
+import { ExperienceCard } from '../experiences/ExperienceCard';
 
-export const GridCards = () => {
+export const GridCards = ({ data }) => {
   return (
-    <div className="grid grid-cols-auto w-full gap-6 place-items-center  justify-center" >
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-        <Card image="/images/card-image.jpeg" experienceTitle="motocros" place="pensilvania" />
-
+    <div className="w-full mx-auto">
+      <div className="grid grid-cols-fluid gap-4" >
+        {
+          data.map(experience => {
+            return (
+              <ExperienceCard key={experience.slug} title={experience.title} country={experience.country} slug={experience.slug} />
+            );
+          })
+        }
+      </div>
     </div>
   );
 };
