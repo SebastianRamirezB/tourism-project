@@ -6,7 +6,7 @@ import './styles.css';
 
 export const Navbar = () => {
   return (
-    <nav className="nav-animation fixed top-0 w-full h-20 ">
+    <nav className="nav-animation fixed top-0 w-full h-20 z-10">
       <div className="wrapper">
         <div className="flex items-center justify-between">
           <Link href="/">
