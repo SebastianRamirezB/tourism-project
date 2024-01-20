@@ -6,7 +6,7 @@ export default function AuthLayout ({ children }) {
       <div className="bg-background-auth bg-cover pt-12 pl-28">
         <Image src="/images/logo.png" width={97} height={80} alt="logo travel pulse" />
       </div>
-      <div>
+      <div className="flex flex-col justify-center items-center">
         {children}
       </div>
     </main>
