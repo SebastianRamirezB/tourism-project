@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'background-auth': "url('/images/picture-auth.webp')"
+      },
       colors: {
         primary: '#4169E1',
         secondary: '#404040',
