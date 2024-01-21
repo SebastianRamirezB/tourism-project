@@ -26,15 +26,22 @@ export default async function Experiencia ({ params }) {
     equipment: experience.equipment,
     tickets: experience.tickets,
     sure: experience.sure
+  };
 
+  const contactInformation = {
+    email: experience.email,
+    tel: experience.tel,
+    instagramTag: experience.instagramTag,
+    whatsappNumber: experience.whatsappNumber,
+    facebookTag: experience.facebookTag
   };
 
   return (
     <main>
-      <Hero heightSize={400} title={experience.title} />
+      <Hero heightSize={400} title={experience.title} backgroundImage={experience.images[3]} />
       <section className="py-28">
         <div className="wrapper">
-          <ExperienceGallery />
+          <ExperienceGallery images={experience.images} />
           <section className="grid grid-cols-[60%_40%] mt-24" >
             <div className="flex flex-col gap-6">
               <div>
@@ -44,7 +51,7 @@ export default async function Experiencia ({ params }) {
               <ExperienceServices {...includes}/>
             </div>
             <div className="place-self-end">
-              <ExperienceReservation />
+              <ExperienceReservation {...contactInformation} />
             </div>
           </section>
         </div>

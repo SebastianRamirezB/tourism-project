@@ -1,39 +1,51 @@
-export const ExperienceGallery = () => {
+import Image from 'next/image';
+
+export const ExperienceGallery = ({ images }) => {
   return (
         <section className="h-[500px] overflow-hidden grid grid-cols-4 grid-rows-2 gap-2">
             <div className="row-span-2">
-                <img
+                <Image
                     className=" w-full h-full object-cover  rounded-2xl"
-                    src="/images/exp1.jpg"
+                    src={images[0]}
                     alt=""
+                    width={400}
+                    height={500}
                 />
             </div>
             <div className="row-span-2">
-                <img
+                <Image
                     className=" w-full h-full object-cover  rounded-2xl"
-                    src="/images/exp2.jpg"
+                    src={images[1]}
                     alt=""
+                    width={400}
+                    height={500}
                 />
             </div>
             <div>
-                <img
+                <Image
                     className=" w-full h-full object-cover  rounded-2xl"
-                    src="/images/exp3.jpg"
+                    src={images[2]}
                     alt=""
+                    width={400}
+                    height={500}
                 />
             </div>
             <div className="col-start-3 row-start-2">
-                <img
+                <Image
                     className=" w-full h-full object-cover  rounded-2xl"
-                    src="/images/exp4.jpg"
+                    src={images[3]}
                     alt=""
+                    width={400}
+                    height={500}
                 />
             </div>
             <div className="row-span-2 col-start-4 row-start-1">
-                <img
+                <Image
                     className=" w-full h-full object-cover  rounded-2xl"
-                    src="/images/exp5.jpg"
+                    src={images[4]}
                     alt=""
+                    width={400}
+                    height={500}
                 />
             </div>
         </section>
