@@ -3,19 +3,31 @@ import { ExperienceReservation } from '@/components/ExperienceReservation';
 import { ExperienceServices } from '@/components/ExperienceServices';
 import { ExperienceSummary } from '@/components/ExperienceSummary';
 import { Hero } from '@/components/Hero';
-import { initialData } from '@/data/seed-data';
 
-export default function Experiencia ({ params }) {
-  const experience = initialData.experiences.find(experience => experience.slug === params.slug);
+async function getData (slug) {
+  const res = await fetch(`http://localhost:3001/api/experiences/${slug}`);
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+export default async function Experiencia ({ params }) {
+  const experience = await getData(params.slug);
 
   return (
     <main>
-      <Hero heightSize={400} title={experience.title}/>
+      <Hero heightSize={400} title={experience.title} />
       <section className="py-28">
         <div className="wrapper">
           <ExperienceGallery />
           <section className="grid grid-cols-[60%_40%] mt-24" >
             <div className="flex flex-col gap-6">
+              <div>
+                <span className="text-xl">{experience.town}, {experience.country}</span>
+              </div>
               <ExperienceSummary description={experience.description} />
               <ExperienceServices />
             </div>

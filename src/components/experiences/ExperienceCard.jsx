@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const ExperienceCard = ({ title, country, slug }) => {
+export const ExperienceCard = ({ title, town, slug }) => {
   return (
 
     <Link href={`/experiencia/${slug}`}>
@@ -12,8 +12,8 @@ export const ExperienceCard = ({ title, country, slug }) => {
           />
         </div>
         <div className="mt-6">
-          <span className="text-[#5B5B5B] text-2xl font-medium">{country}</span>
-          <h2 className="text-3xl font-bold">{title}</h2>
+          <span className="text-[#5B5B5B] text-xl font-medium">{town}</span>
+          <h2 className="text-2xl font-bold">{title}</h2>
         </div>
       </article>
     </Link>

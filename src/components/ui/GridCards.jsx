@@ -7,7 +7,7 @@ export const GridCards = ({ data }) => {
         {
           data.map(experience => {
             return (
-              <ExperienceCard key={experience.slug} title={experience.title} country={experience.country} slug={experience.slug} />
+              <ExperienceCard key={experience.slug} title={experience.title} town={experience.town} slug={experience.slug} />
             );
           })
         }

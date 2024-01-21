@@ -11,7 +11,7 @@ export const ExperienceCreationForm = () => {
       phone: '',
       whatsappNumber: '',
       country: '',
-      municipalities: '',
+      town: '',
       address: '',
       facebook: '',
       instagram: '',
@@ -19,7 +19,7 @@ export const ExperienceCreationForm = () => {
     }
   );
 
-  const { experienceTitle, email, phone, whatsappNumber, country, municipalities, address, facebook, instagram, twitter } = formState;
+  const { experienceTitle, email, phone, whatsappNumber, country, town, address, facebook, instagram, twitter } = formState;
 
   return (
     <div className=" form-experiencie overflow-y-scroll h-full py-10" >
@@ -60,7 +60,7 @@ export const ExperienceCreationForm = () => {
                 Descripción de la experiencia
               </label>
               <div className="mt-2">
-                  <textarea className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl" name="" id="" cols="30" rows="10"></textarea>
+                <textarea className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl" name="" id="" cols="30" rows="10"></textarea>
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@ export const ExperienceCreationForm = () => {
                   autoComplete="municipalities"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={municipalities}
+                  value={town}
                 >
 
                 </select>
