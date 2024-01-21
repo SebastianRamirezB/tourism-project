@@ -5,7 +5,9 @@ import { ExperienceSummary } from '@/components/ExperienceSummary';
 import { Hero } from '@/components/Hero';
 
 async function getData (slug) {
-  const res = await fetch(`http://localhost:3001/api/experiences/${slug}`);
+  const res = await fetch(`http://localhost:3001/api/experiences/${slug}`, {
+    cache: 'no-store'
+  });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -16,6 +18,16 @@ async function getData (slug) {
 
 export default async function Experiencia ({ params }) {
   const experience = await getData(params.slug);
+
+  const includes = {
+    food: experience.food,
+    transport: experience.transport,
+    drinks: experience.drinks,
+    equipment: experience.equipment,
+    tickets: experience.tickets,
+    sure: experience.sure
+
+  };
 
   return (
     <main>
@@ -29,7 +41,7 @@ export default async function Experiencia ({ params }) {
                 <span className="text-xl">{experience.town}, {experience.country}</span>
               </div>
               <ExperienceSummary description={experience.description} />
-              <ExperienceServices />
+              <ExperienceServices {...includes}/>
             </div>
             <div className="place-self-end">
               <ExperienceReservation />

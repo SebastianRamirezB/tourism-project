@@ -4,7 +4,7 @@ import { SearchBar } from '@/components/SearchBar';
 import { GridCards } from '@/components/ui/GridCards';
 
 async function getData () {
-  const res = await fetch('http://localhost:3001/api/experiences');
+  const res = await fetch('http://localhost:3001/api/experiences?limit=20', { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
