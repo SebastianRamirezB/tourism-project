@@ -7,7 +7,7 @@ import { loginFormValidator } from '@/helpers/login-form-validation';
 import { useState } from 'react';
 
 export const LoginForm = () => {
-  const [errorMessages, seterrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState([]);
   const router = useRouter();
   const {
     formState,
@@ -23,7 +23,7 @@ export const LoginForm = () => {
     e.preventDefault();
 
     const isValidForm = loginFormValidator(email, password);
-    seterrorMessages(isValidForm.errorMessages);
+    setErrorMessages(isValidForm.errorMessages);
 
     if (!isValidForm.isValid) return;
 
@@ -39,7 +39,10 @@ export const LoginForm = () => {
     });
     const user = await data.json();
 
-    if (!user.token) return;
+    if (user.statusCode === 401) {
+      setErrorMessages(['Credenciales no válidas']);
+      return;
+    }
 
     router.push('/dashboard');
   };

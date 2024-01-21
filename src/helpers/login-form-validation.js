@@ -8,7 +8,7 @@ export const loginFormValidator = (email, password) => {
   }
 
   if (validator.isEmpty(password)) {
-    errorMessages.push('El campo de la contraseña no puede estar vacio');
+    errorMessages.push('El campo de la contraseña no puede estar vacío');
   }
 
   if (errorMessages.length !== 0) {
