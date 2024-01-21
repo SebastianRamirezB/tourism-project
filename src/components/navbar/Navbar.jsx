@@ -4,15 +4,15 @@ import { LoginButton } from '../LoginButton';
 
 import './styles.css';
 
-export const Navbar = () => {
+export const Navbar = ({ isThemeLight = false }) => {
   return (
-    <nav className="nav-animation fixed top-0 w-full h-20 z-10">
+    <nav className={`nav-animation fixed top-0 w-full h-20 z-10 ${isThemeLight ? 'text-black' : 'text-white'}`}>
       <div className="wrapper">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <Image src="/images/logo.png" width={97} height={80} alt="logo travel pulse" />
+            <Image src={isThemeLight ? '/images/logo-purple.png' : '/images/logo.png'} width={97} height={80} alt="logo travel pulse" />
           </Link>
-          <ul className="text-white text-2xl font-extrabold flex gap-16">
+          <ul className="text-2xl font-extrabold flex gap-16">
             <Link href="/experiencias" >
               Experiencias
             </Link>
@@ -24,7 +24,7 @@ export const Navbar = () => {
             </Link>
           </ul>
           <div>
-            <LoginButton />
+            <LoginButton isThemeLight={ isThemeLight} />
           </div>
         </div>
       </div>

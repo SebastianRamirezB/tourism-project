@@ -20,3 +20,7 @@ body {
 .carousel::-webkit-scrollbar {
   display: none;
 }
+
+.form-experiencie::-webkit-scrollbar {
+  display: none;
+}

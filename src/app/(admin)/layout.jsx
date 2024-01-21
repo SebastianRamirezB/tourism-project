@@ -11,8 +11,10 @@ export const metadata = {
 
 export default function RootLayout ({ children }) {
   return (
-    <div className={urbanist.className}>
-      {children}
-    </div>
+    <html lang='es'>
+      <body className={urbanist.className}>
+        {children}
+      </body>
+    </html>
   );
 }
