@@ -1,10 +1,10 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 
 import { useForm } from '@/hooks/useForm';
-
-import { useState } from 'react';
 import { loginFormValidator } from '@/helpers/login-form-validation';
 
 export const LoginForm = () => {
@@ -44,6 +44,8 @@ export const LoginForm = () => {
       setErrorMessages(['Credenciales no válidas']);
       return;
     }
+
+    setCookie('tourism-token', user.token.toString());
 
     router.push('/dashboard');
   };

@@ -1,6 +1,16 @@
+import { cookies } from 'next/headers';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
 export default function AuthLayout ({ children }) {
+  const cookieStore = cookies();
+
+  const token = cookieStore.get('tourism-token');
+
+  if (token) {
+    redirect('/dashboard');
+  }
+
   return (
 
       <main className="grid grid-cols-2 w-screen h-screen">
