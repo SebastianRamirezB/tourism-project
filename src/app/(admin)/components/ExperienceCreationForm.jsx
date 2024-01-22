@@ -1,5 +1,6 @@
 'use client';
 import { locations } from '@/data/dataLocations';
+import { useChecked } from '@/hooks/useChecked';
 import { useForm } from '@/hooks/useForm';
 import { useEffect, useState } from 'react';
 
@@ -26,7 +27,19 @@ export const ExperienceCreationForm = () => {
     }
   );
 
+  const { checked, handleClickCheckbox } = useChecked({
+    food: false,
+    drinks: false,
+    transport: false,
+    equipment: false,
+    tickets: false,
+    sure: false
+  });
+
   const { title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag } = formState;
+
+  const { food, drinks, transport, equipment, tickets, sure } = checked;
+  console.log(title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag, food, drinks, transport, equipment, tickets, sure);
 
   const createExperience = (event) => {
     event.preventDefault();
@@ -86,8 +99,8 @@ export const ExperienceCreationForm = () => {
                   rows="10"
                   onChange={onInputChange}
                   value={description}
-                  >
-                  </textarea>
+                >
+                </textarea>
               </div>
             </div>
           </div>
@@ -162,6 +175,8 @@ export const ExperienceCreationForm = () => {
                   onChange={onInputChange}
                   value={country}
                 >
+                  <option>----</option>
+
                   <option>Colombia</option>
                 </select>
               </div>
@@ -198,7 +213,7 @@ export const ExperienceCreationForm = () => {
             </div>
             <div className="sm:col-span-full">
               <label
-                htmlFor="country"
+                htmlFor="town"
                 className="block text-2xl font-medium  text-gray-900"
               >
                 Ciudad
@@ -321,6 +336,8 @@ export const ExperienceCreationForm = () => {
                       name="food"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      checked={food}
+                      onChange={handleClickCheckbox}
 
                     />
                   </div>
@@ -340,12 +357,13 @@ export const ExperienceCreationForm = () => {
                       name="transport"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-
+                      checked={transport}
+                      onChange={handleClickCheckbox}
                     />
                   </div>
                   <div className="text-2xl ">
                     <label
-                      htmlFor="candidates"
+                      htmlFor="transport"
                       className="font-medium text-gray-900"
                     >
                       Transporte
@@ -359,12 +377,13 @@ export const ExperienceCreationForm = () => {
                       name="drinks"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-
+                      checked={drinks}
+                      onChange={handleClickCheckbox}
                     />
                   </div>
                   <div className="text-2xl ">
                     <label
-                      htmlFor="offers"
+                      htmlFor="drinks"
                       className="font-medium text-gray-900"
                     >
                       Bebidas
@@ -378,12 +397,13 @@ export const ExperienceCreationForm = () => {
                       name="equipment"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-
+                      checked={equipment}
+                      onChange={handleClickCheckbox}
                     />
                   </div>
                   <div className="text-2xl ">
                     <label
-                      htmlFor="offers"
+                      htmlFor="equipment"
                       className="font-medium text-gray-900"
                     >
                       Equipo
@@ -397,12 +417,13 @@ export const ExperienceCreationForm = () => {
                       name="tickets"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-
+                      checked={tickets}
+                      onChange={handleClickCheckbox}
                     />
                   </div>
                   <div className="text-2xl ">
                     <label
-                      htmlFor="offers"
+                      htmlFor="tickets"
                       className="font-medium text-gray-900"
                     >
                       Entradas
@@ -416,12 +437,13 @@ export const ExperienceCreationForm = () => {
                       name="sure"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-
+                      checked={sure}
+                      onChange={handleClickCheckbox}
                     />
                   </div>
                   <div className="text-2xl ">
                     <label
-                      htmlFor="offers"
+                      htmlFor="sure"
                       className="font-medium text-gray-900"
                     >
                       Seguro
