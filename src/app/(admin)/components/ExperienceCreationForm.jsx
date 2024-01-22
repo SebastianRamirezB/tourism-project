@@ -1,28 +1,48 @@
+'use client';
+import { locations } from '@/data/dataLocations';
 import { useForm } from '@/hooks/useForm';
+import { useEffect, useState } from 'react';
 
 export const ExperienceCreationForm = () => {
+  const [townSearch, setTownSearch] = useState(['']);
+
   const {
     formState,
     onInputChange
   } = useForm(
     {
-      experienceTitle: '',
+      title: '',
+      description: '',
       email: '',
-      phone: '',
+      tel: '',
       whatsappNumber: '',
       country: '',
+      department: '',
       town: '',
       address: '',
-      facebook: '',
-      instagram: '',
-      twitter: ''
+      facebookTag: '',
+      instagramTag: '',
+      twitterTag: ''
     }
   );
 
-  const { experienceTitle, email, phone, whatsappNumber, country, town, address, facebook, instagram, twitter } = formState;
+  const { title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag } = formState;
+
+  const createExperience = (event) => {
+    event.preventDefault();
+    console.log('hola creando experiencias');
+  };
+
+  useEffect(() => {
+    const town = locations.find(
+      (d) => d.departamento === department
+    );
+    if (!town) return;
+    setTownSearch(town.ciudades);
+  }, [department]);
 
   return (
-    <div className=" form-experiencie overflow-y-scroll h-full py-10" >
+    <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={createExperience} >
       <div className=" p-10 ">
         <div className="border-b pb-12">
           <h2 className="text-2xl font-semibold  text-gray-900">
@@ -43,12 +63,10 @@ export const ExperienceCreationForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="experienceTitle"
-                  id="experienceTitle"
-                  autoComplete="experienceTitle"
+                  name="title"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={experienceTitle}
+                  value={title}
                 />
               </div>
             </div>
@@ -60,7 +78,16 @@ export const ExperienceCreationForm = () => {
                 Descripción de la experiencia
               </label>
               <div className="mt-2">
-                <textarea className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl" name="" id="" cols="30" rows="10"></textarea>
+                <textarea
+                  className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
+                  name="description"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  onChange={onInputChange}
+                  value={description}
+                  >
+                  </textarea>
               </div>
             </div>
           </div>
@@ -77,10 +104,8 @@ export const ExperienceCreationForm = () => {
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
                   name="email"
                   type="email"
-                  autoComplete="email"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
                   value={email}
@@ -90,7 +115,7 @@ export const ExperienceCreationForm = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="phone"
+                htmlFor="tel"
                 className="block text-2xl font-medium  text-gray-900"
               >
                 Telefono
@@ -98,11 +123,10 @@ export const ExperienceCreationForm = () => {
               <div className="mt-2">
                 <input
                   type="tel"
-                  name="phone"
-                  id="phone"
+                  name="tel"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={phone}
+                  value={tel}
                 />
               </div>
             </div>
@@ -118,32 +142,56 @@ export const ExperienceCreationForm = () => {
                 <input
                   type="tel"
                   name="whatsappNumber"
-                  id="whatsappNumber"
-                  autoComplete="family-name"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
                   value={whatsappNumber}
                 />
               </div>
             </div>
+            <div className="sm:col-span-full">
+              <label
+                htmlFor="country"
+                className="block text-2xl font-medium  text-gray-900"
+              >
+                Pais
+              </label>
+              <div className="mt-2">
+                <select
+                  name="country"
+                  className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
+                  onChange={onInputChange}
+                  value={country}
+                >
+                  <option>Colombia</option>
+                </select>
+              </div>
+            </div>
 
             <div className="col-span-full">
               <label
-                htmlFor="country"
+                htmlFor="department"
                 className="block text-2xl font-medium  text-gray-900"
               >
                 Departamento
               </label>
               <div className="mt-2">
                 <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
+                  name="department"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={country}
+                  value={department}
                 >
                   <option>----</option>
+                  {locations.map(({ id, departamento }) => {
+                    return (
+                      <option
+                        key={id}
+                        value={departamento}
+                      >
+                        {departamento}
+                      </option>
+                    );
+                  })}
 
                 </select>
               </div>
@@ -157,13 +205,24 @@ export const ExperienceCreationForm = () => {
               </label>
               <div className="mt-2">
                 <select
-                  id="municipalities"
-                  name="municipalities"
-                  autoComplete="municipalities"
+                  name="town"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
                   value={town}
                 >
+                  {townSearch &&
+                    townSearch.map(
+                      (town) => {
+                        return (
+                          <option
+                            key={town}
+                            value={town}
+                          >
+                            {town}
+                          </option>
+                        );
+                      }
+                    )}
 
                 </select>
               </div>
@@ -180,8 +239,6 @@ export const ExperienceCreationForm = () => {
                 <input
                   type="text"
                   name="address"
-                  id="address"
-                  autoComplete="address"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
                   value={address}
@@ -191,7 +248,7 @@ export const ExperienceCreationForm = () => {
 
             <div className="sm:col-span-2 sm:col-start-1">
               <label
-                htmlFor="city"
+                htmlFor="facebookTag"
                 className="block text-2xl font-medium  text-gray-900"
               >
                 Facebook
@@ -199,11 +256,10 @@ export const ExperienceCreationForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="facebook"
-                  id="facebook"
+                  name="facebookTag"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={facebook}
+                  value={facebookTag}
                 />
               </div>
             </div>
@@ -218,11 +274,10 @@ export const ExperienceCreationForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="instagram"
-                  id="instagram"
+                  name="instagramTag"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={instagram}
+                  value={instagramTag}
                 />
               </div>
             </div>
@@ -237,11 +292,10 @@ export const ExperienceCreationForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="twitter"
-                  id="twitter"
+                  name="twitterTag"
                   className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
                   onChange={onInputChange}
-                  value={twitter}
+                  value={twitterTag}
                 />
               </div>
             </div>
@@ -385,12 +439,11 @@ export const ExperienceCreationForm = () => {
         <button
           type="submit"
           className="absolute bottom-5 right-10 py-5 px-8 bg-primary rounded-[40px] text-white text-2xl font-bold"
-          onClick={() => console.log('holaa')}
 
         >
           Crear experiencia
         </button>
       </div>
-    </div>
+    </form>
   );
 };
