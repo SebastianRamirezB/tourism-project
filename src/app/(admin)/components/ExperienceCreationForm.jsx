@@ -1,12 +1,16 @@
 'use client';
-import { locations } from '@/data/dataLocations';
-import { useChecked } from '@/hooks/useChecked';
-import { useForm } from '@/hooks/useForm';
 import { useEffect, useState } from 'react';
+import { getCookie } from 'cookies-next';
+
+import { useForm } from '@/hooks/useForm';
+import { useChecked } from '@/hooks/useChecked';
+import { experienceCreationFormValidator } from '@/helpers/form-validation-experience-creation';
+import { locations } from '@/data/dataLocations';
+import { useImageUpload } from '@/hooks/useImageUpload';
 
 export const ExperienceCreationForm = () => {
+  const [errorMessages, setErrorMessages] = useState([]);
   const [townSearch, setTownSearch] = useState(['']);
-
   const {
     formState,
     onInputChange
@@ -36,14 +40,83 @@ export const ExperienceCreationForm = () => {
     sure: false
   });
 
+  const { imageFiles, uploadedImageManager } = useImageUpload([]);
+
   const { title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag } = formState;
 
   const { food, drinks, transport, equipment, tickets, sure } = checked;
-  console.log(title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag, food, drinks, transport, equipment, tickets, sure);
 
-  const createExperience = (event) => {
+  const uploadImages = async (file, token) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const resp = await fetch('http://localhost:3001/api/files/experience', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await resp.json();
+      return data;
+    } catch (error) {
+      console.log(error + 'error al enviar imagen');
+    }
+  };
+
+  const createExperience = async (event) => {
     event.preventDefault();
+
+    const isValidForm = experienceCreationFormValidator(title, description, email, tel, whatsappNumber, country, department, town, address);
+    setErrorMessages(isValidForm.errorMessages);
+
+    if (!isValidForm.isValid) return;
+
+    const token = getCookie('tourism-token');
+
+    const imagePromises = [];
+
+    for (let i = 0; i < imageFiles.length; i++) {
+      imagePromises.push(uploadImages(imageFiles[i], token));
+    }
+
+    const urlImages = await Promise.all(imagePromises).then((values) => {
+      return values.map(url => url.secureUrl);
+    });
+
     console.log('hola creando experiencias');
+    const data = await fetch('http://localhost:3001/api/experiences', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        email,
+        tel,
+        whatsappNumber,
+        country,
+        department,
+        town,
+        address,
+        facebookTag,
+        instagramTag,
+        twitterTag,
+        food,
+        drinks,
+        transport,
+        equipment,
+        tickets,
+        sure,
+        images: urlImages
+      })
+    });
+    const experience = await data.json();
+    console.log(experience);
   };
 
   useEffect(() => {
@@ -56,6 +129,15 @@ export const ExperienceCreationForm = () => {
 
   return (
     <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={createExperience} >
+      {
+        errorMessages.length !== 0 && errorMessages.map(error => {
+          return (
+            <ul key={error}>
+              <li>{error}</li>
+            </ul>
+          );
+        })
+      }
       <div className=" p-10 ">
         <div className="border-b pb-12">
           <h2 className="text-2xl font-semibold  text-gray-900">
@@ -452,6 +534,8 @@ export const ExperienceCreationForm = () => {
                 </div>
               </div>
             </fieldset>
+
+            <input type="file" onChange={uploadedImageManager} multiple />
 
           </div>
         </div>
