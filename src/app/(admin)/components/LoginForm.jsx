@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { useForm } from '@/hooks/useForm';
-import { loginFormValidator } from '@/helpers/login-form-validation';
+
 import { useState } from 'react';
+import { loginFormValidator } from '@/helpers/login-form-validation';
 
 export const LoginForm = () => {
   const [errorMessages, setErrorMessages] = useState([]);

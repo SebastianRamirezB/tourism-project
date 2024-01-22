@@ -1,9 +1,14 @@
 'use client';
-import { useForm } from '@/hooks/useForm';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import { useForm } from '@/hooks/useForm';
+import { registerFormValidator } from '@/helpers/register-form-validation';
+
 export const RegisterForm = () => {
+  const [errorMessages, setErrorMessages] = useState([]);
+
   const router = useRouter();
   const {
     formState,
@@ -20,6 +25,11 @@ export const RegisterForm = () => {
   const register = async (e) => {
     e.preventDefault();
 
+    const isValidForm = registerFormValidator(fullName, email, password, confirmPassword);
+    setErrorMessages(isValidForm.errorMessages);
+
+    if (!isValidForm.isValid) return;
+
     const data = await fetch('http://localhost:3001/api/auth/register', {
       method: 'POST',
       headers: {
@@ -32,7 +42,11 @@ export const RegisterForm = () => {
       })
     });
     const user = await data.json();
-    console.log(user);
+
+    if (user.statusCode === 400) {
+      setErrorMessages(['La contraseña debe tener una letra mayúscula, minúscula y un número.La contraseña debe tener una letra mayúscula, minúscula y un número.']);
+      return;
+    }
     if (!user.token) return;
 
     router.push('/dashboard');
@@ -40,6 +54,15 @@ export const RegisterForm = () => {
 
   return (
     <form className="flex flex-col gap-8" onSubmit={register}>
+      {
+        errorMessages.length !== 0 && errorMessages.map((error, index) => {
+          return (
+            <ul key={index}>
+              <li>{error}</li>
+            </ul>
+          );
+        })
+      }
       <input
         name="fullName"
         className=" text-xl py-6 px-3 border-b border-[#B4B4B4] outline-none"
