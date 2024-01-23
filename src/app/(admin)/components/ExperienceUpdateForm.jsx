@@ -66,7 +66,6 @@ export const ExperienceUpdateForm = ({ id }) => {
 
     const token = getCookie('tourism-token');
 
-    console.log('hola creando experiencias');
     const data = await fetch(`http://localhost:3001/api/experiences/${id}`, {
       method: 'PATCH',
       headers: {

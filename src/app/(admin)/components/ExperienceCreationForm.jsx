@@ -7,8 +7,10 @@ import { useChecked } from '@/hooks/useChecked';
 import { experienceCreationFormValidator } from '@/helpers/form-validation-experience-creation';
 import { locations } from '@/data/dataLocations';
 import { useImageUpload } from '@/hooks/useImageUpload';
+import { useRouter } from 'next/navigation';
 
 export const ExperienceCreationForm = () => {
+  const router = useRouter();
   const [errorMessages, setErrorMessages] = useState([]);
   const [townSearch, setTownSearch] = useState(['']);
   const {
@@ -86,8 +88,7 @@ export const ExperienceCreationForm = () => {
       return values.map(url => url.secureUrl);
     });
 
-    console.log('hola creando experiencias');
-    const data = await fetch('http://localhost:3001/api/experiences', {
+    await fetch('http://localhost:3001/api/experiences', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,8 +116,8 @@ export const ExperienceCreationForm = () => {
         images: urlImages
       })
     });
-    const experience = await data.json();
-    console.log(experience);
+    router.refresh();
+    alert('Experiencia creada');
   };
 
   useEffect(() => {
