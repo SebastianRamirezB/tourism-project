@@ -1,7 +1,7 @@
 import { DashboardExperienceCard } from '@/app/(admin)/components/DashboardExperienceCard';
 import { ExperienceCard } from '../experiences/ExperienceCard';
 
-export const GridCards = ({ initialData, data, isModifiable = false }) => {
+export const GridCards = ({ data, isModifiable = false }) => {
   return (
     <div className="w-full mx-auto">
       <div className="grid grid-cols-fluid gap-4" >

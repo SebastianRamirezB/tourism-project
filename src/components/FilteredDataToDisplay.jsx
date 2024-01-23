@@ -8,11 +8,11 @@ import { locations } from '@/data/dataLocations';
 export const FilteredDataToDisplay = ({ data }) => {
   const [filteredData, setfilteredData] = useState(data);
 
-  const [categorySearch, setCategorySearch] = useState();
+  const [categorySearch, setCategorySearch] = useState([]);
 
-  const [departmentSearch, setDepartmentSearch] = useState();
-  const [townOptions, setOptions] = useState();
-  const [townSearch, setTownSearch] = useState();
+  const [departmentSearch, setDepartmentSearch] = useState([]);
+  const [townOptions, setOptions] = useState([]);
+  const [townSearch, setTownSearch] = useState([]);
 
   const [searchParameter, setSearchParameter] = useState('');
 
@@ -50,6 +50,10 @@ export const FilteredDataToDisplay = ({ data }) => {
     setfilteredData(dataS);
   }, [searchParameter]);
 
+  useEffect(() => {
+    if (townSearch === '----' && departmentSearch === '----' && categorySearch === '----' && searchParameter === '') setfilteredData(data);
+  }, [filteredData]);
+
   return (
         <>
             <SearchBar state={searchParameter} actionFunction={onSearchChanges} />
@@ -59,7 +63,7 @@ export const FilteredDataToDisplay = ({ data }) => {
                 <ComponentSelect title="ciudad" options={townOptions} actionFunction={setTownSearch} />
 
             </div>
-            <GridCards initialData={data} data={filteredData} />
+            <GridCards data={filteredData} />
         </>
 
   );
