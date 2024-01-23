@@ -1,7 +1,5 @@
-import { ComponentSelect } from '@/components/ComponentSelect';
+import { FilteredDataToDisplay } from '@/components/FilteredDataToDisplay';
 import { Hero } from '@/components/Hero';
-import { SearchBar } from '@/components/SearchBar';
-import { GridCards } from '@/components/ui/GridCards';
 
 async function getData () {
   const res = await fetch('http://localhost:3001/api/experiences?limit=20', { cache: 'no-store' });
@@ -24,12 +22,7 @@ export default async function Experiencias () {
                     <div className="wrapper">
                         <div className="flex flex-col gap-10">
                             <div className=" flex flex-col gap-10 ">
-                                <SearchBar />
-                                <div className="flex w-full gap-[30px]">
-                                    <ComponentSelect />
-                                    <ComponentSelect />
-                                </div>
-                                <GridCards data={data} />
+                                <FilteredDataToDisplay data={data} />
                             </div>
                         </div>
                     </div>

@@ -20,6 +20,7 @@ export const ExperienceCreationForm = () => {
     {
       title: '',
       description: '',
+      category: '',
       email: '',
       tel: '',
       whatsappNumber: '',
@@ -44,7 +45,7 @@ export const ExperienceCreationForm = () => {
 
   const { imageFiles, uploadedImageManager } = useImageUpload([]);
 
-  const { title, description, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag } = formState;
+  const { title, description, category, email, tel, whatsappNumber, country, department, town, address, facebookTag, instagramTag, twitterTag } = formState;
 
   const { food, drinks, transport, equipment, tickets, sure } = checked;
 
@@ -97,6 +98,7 @@ export const ExperienceCreationForm = () => {
       body: JSON.stringify({
         title,
         description,
+        category,
         email,
         tel,
         whatsappNumber,
@@ -187,6 +189,34 @@ export const ExperienceCreationForm = () => {
                 </textarea>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="sm:col-span-full">
+          <label
+            htmlFor="category"
+            className="block text-2xl font-medium  text-gray-900"
+          >
+            Categoría
+          </label>
+          <div className="mt-2">
+            <select
+              name="category"
+              className="w-full rounded-[4px] border-2 border-[#B4B4B4] px-5 py-6 outline-primary text-xl"
+              onChange={onInputChange}
+              value={category}
+            >
+              <option>----</option>
+
+              <option>tour en bicicleta</option>
+              <option>senderismo</option>
+              <option>parapente</option>
+              <option>paseo a caballo</option>
+              <option>vida nocturna</option>
+              <option>motocross</option>
+              <option>tejo</option>
+              <option>otro</option>
+
+            </select>
           </div>
         </div>
 

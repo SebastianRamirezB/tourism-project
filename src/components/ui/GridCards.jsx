@@ -1,7 +1,7 @@
 import { DashboardExperienceCard } from '@/app/(admin)/components/DashboardExperienceCard';
 import { ExperienceCard } from '../experiences/ExperienceCard';
 
-export const GridCards = ({ data, isModifiable = false }) => {
+export const GridCards = ({ initialData, data, isModifiable = false }) => {
   return (
     <div className="w-full mx-auto">
       <div className="grid grid-cols-fluid gap-4" >
@@ -16,7 +16,7 @@ export const GridCards = ({ data, isModifiable = false }) => {
 
                 );
               }))
-            : <h1>Crea una experiencia</h1>
+            : <h1>No hay resultados</h1>
         }
       </div>
     </div>

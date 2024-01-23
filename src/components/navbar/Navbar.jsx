@@ -12,15 +12,9 @@ export const Navbar = ({ isThemeLight = false }) => {
           <Link href="/">
             <Image src={isThemeLight ? '/images/logo-purple.png' : '/images/logo.png'} width={97} height={80} alt="logo travel pulse" />
           </Link>
-          <ul className="text-2xl font-extrabold flex gap-16">
+          <ul className="text-2xl font-extrabold flex justify-end gap-16">
             <Link href="/experiencias" >
               Experiencias
-            </Link>
-            <Link href="#" >
-              Stories
-            </Link>
-            <Link href="#" >
-              Reviews
             </Link>
           </ul>
           <div>
