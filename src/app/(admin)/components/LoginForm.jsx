@@ -45,7 +45,13 @@ export const LoginForm = () => {
       return;
     }
 
+    const userCookie = {
+      id: user.id,
+      name: user.fullName
+    };
+
     setCookie('tourism-token', user.token.toString());
+    setCookie('tourism-user', JSON.stringify(userCookie));
 
     router.push('/dashboard');
   };

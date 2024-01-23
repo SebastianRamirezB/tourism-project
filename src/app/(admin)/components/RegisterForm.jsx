@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { useForm } from '@/hooks/useForm';
 import { registerFormValidator } from '@/helpers/register-form-validation';
+import { setCookie } from 'cookies-next';
 
 export const RegisterForm = () => {
   const [errorMessages, setErrorMessages] = useState([]);
@@ -48,6 +49,14 @@ export const RegisterForm = () => {
       return;
     }
     if (!user.token) return;
+
+    const userCookie = {
+      id: user.id,
+      name: user.fullName
+    };
+
+    setCookie('tourism-token', user.token.toString());
+    setCookie('tourism-user', JSON.stringify(userCookie));
 
     router.push('/dashboard');
   };

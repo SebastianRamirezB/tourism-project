@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { LoginButton } from '../LoginButton';
 
 import './styles.css';
+import { AuthenticationStatusButtons } from '../ui/AuthenticationStatusButtons';
 
 export const Navbar = ({ isThemeLight = false }) => {
   return (
@@ -24,7 +24,7 @@ export const Navbar = ({ isThemeLight = false }) => {
             </Link>
           </ul>
           <div>
-            <LoginButton isThemeLight={ isThemeLight} />
+            <AuthenticationStatusButtons />
           </div>
         </div>
       </div>
