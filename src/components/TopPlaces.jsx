@@ -1,16 +1,27 @@
-import { RedirectButton } from './RedirectButton';
-import { TopExperienceCardsList } from './TopExperienceCardsList';
-import { BaseCardsContainer } from './ui/BaseCardsContainer';
+import { SliderTopPlaces } from './SliderTopPlaces';
+import { TopPlaceCard } from './TopPlaceCard';
 
 export const TopPlaces = () => {
   return (
+    <div className="wrapper">
+      <div className=" w-full ">
+        <section className="flex justify-between py-12">
+          <div className=" w-2/5 flex  items-center">
+            <p className="text-6xl font-bold">
+              Experiencias inolvidables organizadas por gente local
+            </p>
+          </div>
+          <div className="w-3/5 h-full">
+            <SliderTopPlaces>
+              <TopPlaceCard video="amazonas" text="Amazonas" />
+              <TopPlaceCard video="bogota" text="Bogotá"/>
+              <TopPlaceCard video="medellin" text="Medellín"/>
+            </SliderTopPlaces>
+          </div>
+        </section>
+      </div>
 
-    <BaseCardsContainer
-      title="Plan your best trip ever"
-      description="Here are some of the most visited places in 2023"
-      actionComponent={<RedirectButton link="#" text="view all destination" />}
-      content={<TopExperienceCardsList cards={[{ id: 1, place: 'croatia', image: '/images/card-image.jpeg' }, { id: 2, place: 'croatia', image: '/images/card-image.jpeg' }, { id: 3, place: 'croatia', image: '/images/card-image.jpeg' }]} />}
-    />
+    </div>
 
   );
 };

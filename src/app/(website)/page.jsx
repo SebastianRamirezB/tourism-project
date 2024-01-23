@@ -5,7 +5,7 @@ import { TopPlaces } from '@/components/TopPlaces';
 export default function Home () {
   return (
         <main className="flex flex-col gap-36">
-            <Hero title="Discover New Places and Create Unforgettable Memories" backgroundImage="/images/background-hero.png"/>
+            <Hero title="Descubra nuevos lugares y cree recuerdos inolvidables" backgroundImage="/images/background-hero.png"/>
             <TopPlaces />
             <TopExperiencies />
         </main>
