@@ -117,6 +117,7 @@ export const ExperienceCreationForm = () => {
       })
     });
     router.refresh();
+    localStorage.setItem('isModalActive', 'false');
     alert('Experiencia creada');
   };
 

@@ -3,17 +3,22 @@
 import { CreateAndUpdateExperienceButton } from '@/app/(admin)/components/CreateAndUpdateExperienceButton';
 import Image from 'next/image';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Modal = ({ children, textButton, updateVersion = false }) => {
-  const [isActiveModal, setIsActiveModal] = useState(false);
+  const [isActiveModal, setIsActiveModal] = useState();
 
   const changeActive = () => {
-    setIsActiveModal(!isActiveModal);
+    localStorage.setItem('isModalActive', `${!isActiveModal}`);
+    setIsActiveModal(JSON.parse(localStorage.getItem('isModalActive')));
   };
   const stopPropagation = (e) => {
     e.stopPropagation();
   };
+
+  useEffect(() => {
+    setIsActiveModal(JSON.parse(localStorage.getItem('isModalActive')));
+  }, [JSON.parse(localStorage.getItem('isModalActive'))]);
 
   return (
         <>

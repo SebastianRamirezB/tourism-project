@@ -94,8 +94,8 @@ export const ExperienceUpdateForm = ({ id }) => {
       })
     });
     await data.json();
+    localStorage.setItem('isModalActive', 'false');
     router.refresh();
-    alert('Experiencia Actualizada');
   };
 
   useEffect(() => {
@@ -532,7 +532,7 @@ export const ExperienceUpdateForm = ({ id }) => {
                     className="absolute bottom-5 right-10 py-5 px-8 bg-primary rounded-[40px] text-white text-2xl font-bold"
 
                 >
-                    Crear experiencia
+                    Actualizar experiencia
                 </button>
             </div>
         </form>
