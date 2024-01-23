@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const TopPlaceCard = ({ video, text }) => {
   return (
     <Link href="/experiencias">
-      <article className="w-[320px] h-[540px] rounded-2xl overflow-hidden relative">
+      <article className="w-[320px] h-[540px] rounded-3xl overflow-hidden relative">
         <video
           className="w-full h-full object-cover"
           autoPlay

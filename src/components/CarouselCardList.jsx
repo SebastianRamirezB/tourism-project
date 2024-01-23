@@ -1,15 +1,28 @@
 import { CarouselCard } from './CarouselCard';
 
-export const CarouselCardList = ({ cards, sliderContentRef }) => {
+async function getData () {
+  const res = await fetch('http://localhost:3001/api/experiences?limit=20');
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+export default async function CarouselCardList ({ sliderContentRef }) {
+  const data = await getData();
+  const topExperiences = data.filter(experience => experience.review > 3);
   return (
-        <div ref={sliderContentRef} className=" carousel flex justify-between items-center w-full gap-6 overflow-x-auto scroll-smooth">
+        <div ref={sliderContentRef} className=" carousel flex justify-between py- items-center h-[600px] w-full gap-6 overflow-x-auto scroll-smooth">
             {
-                cards.map(card =>
+                topExperiences.map(card =>
                     <CarouselCard
                         key={card.id}
-                        place={card.place}
-                        experienceTitle={card.experienceTitle}
-                        image={card.image}
+                        place={card.town}
+                        experienceTitle={card.title}
+                        image={card.images[0]}
+                        slug={card.slug}
                     />
                 )
             }

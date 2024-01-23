@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 
 export const ExperienceCreationForm = () => {
   const router = useRouter();
+  const [loadData, setLoadData] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
   const [townSearch, setTownSearch] = useState(['']);
   const {
@@ -77,6 +78,8 @@ export const ExperienceCreationForm = () => {
 
     if (!isValidForm.isValid) return;
 
+    setLoadData(true);
+
     const token = getCookie('tourism-token');
 
     const imagePromises = [];
@@ -120,7 +123,7 @@ export const ExperienceCreationForm = () => {
     });
     router.refresh();
     localStorage.setItem('isModalActive', 'false');
-    alert('Experiencia creada');
+    setLoadData(false);
   };
 
   useEffect(() => {
@@ -435,10 +438,6 @@ export const ExperienceCreationForm = () => {
           <h2 className="text-2xl font-semibold  text-gray-900">
             Que incluye la experiencia
           </h2>
-          <p className="mt-1 text-xl  text-gray-600">
-            Well always let you know about important changes, but
-            you pick what else you want to hear about.
-          </p>
 
           <div className="mt-10 space-y-10">
             <fieldset>
@@ -576,8 +575,8 @@ export const ExperienceCreationForm = () => {
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
           type="submit"
-          className="absolute bottom-5 right-10 py-5 px-8 bg-primary rounded-[40px] text-white text-2xl font-bold"
-
+          className={`absolute bottom-5 right-10 py-5 px-8 rounded-[40px] text-white text-2xl font-bold ${loadData ? 'bg-disabled' : 'bg-primary'}`}
+          disabled={loadData}
         >
           Crear experiencia
         </button>
