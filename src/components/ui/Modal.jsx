@@ -1,10 +1,11 @@
 'use client';
 
+import { CreateAndUpdateExperienceButton } from '@/app/(admin)/components/CreateAndUpdateExperienceButton';
 import Image from 'next/image';
-import { CreateExperienceButton } from '@/app/(admin)/components/CreateExperienceButton';
+
 import { useState } from 'react';
 
-export const Modal = ({ children }) => {
+export const Modal = ({ children, textButton, updateVersion = false }) => {
   const [isActiveModal, setIsActiveModal] = useState(false);
 
   const changeActive = () => {
@@ -16,7 +17,7 @@ export const Modal = ({ children }) => {
 
   return (
         <>
-            <CreateExperienceButton actionFunction={changeActive} />
+            <CreateAndUpdateExperienceButton actionFunction={changeActive} text={textButton} updateVersion={updateVersion} />
             {isActiveModal && (
             <div className="fixed top-0 left-0 h-screen w-full z-40">
                 <div onClick={changeActive} className="w-full h-full bg-black/40 flex justify-center items-center cursor-pointer">

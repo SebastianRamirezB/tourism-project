@@ -1,6 +1,7 @@
+import { DashboardExperienceCard } from '@/app/(admin)/components/DashboardExperienceCard';
 import { ExperienceCard } from '../experiences/ExperienceCard';
 
-export const GridCards = ({ data }) => {
+export const GridCards = ({ data, isModifiable = false }) => {
   return (
     <div className="w-full mx-auto">
       <div className="grid grid-cols-fluid gap-4" >
@@ -8,10 +9,14 @@ export const GridCards = ({ data }) => {
           data.length !== 0
             ? (data.map(experience => {
                 return (
-              <ExperienceCard key={experience.id} title={experience.title} town={experience.town} slug={experience.slug} image={experience.images[0]} />
+
+                  isModifiable
+                    ? (<DashboardExperienceCard key={experience.id} id={experience.id} title={experience.title} town={experience.town} slug={experience.slug} image={experience.images[0]} />)
+                    : (<ExperienceCard key={experience.id} title={experience.title} town={experience.town} slug={experience.slug} image={experience.images[0]} />)
+
                 );
               }))
-            : <h1>no hay experiencias</h1>
+            : <h1>Crea una experiencia</h1>
         }
       </div>
     </div>

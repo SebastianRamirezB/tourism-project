@@ -30,11 +30,11 @@ export default async function DashboardPage () {
           title={`Bienvenido ${user.name}`}
           description={'Explora tus experiencias o crea una nueva'}
           actionComponent= {
-          <Modal>
+          <Modal textButton="crear experiencia">
             <ExperienceCreationForm />
           </Modal>
           }
-           content={<GridCards data={dataUser} />}
+           content={<GridCards isModifiable data={dataUser} />}
         />
       </main>
 
