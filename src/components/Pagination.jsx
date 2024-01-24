@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react';
 
 export const Pagination = ({ actionFunction, limitData }) => {
   const [offsetParameter, setOffsetParameter] = useState(0);
-  const [limitParameter, setLimitParameter] = useState(5);
+  const [limitParameter, setLimitParameter] = useState(6);
 
   const onClickNext = () => {
     if (limitParameter >= limitData) return;
-    setLimitParameter((previousValue) => previousValue + 5);
-    setOffsetParameter((previousValue) => previousValue + 5);
+    setLimitParameter((previousValue) => previousValue + 6);
+    setOffsetParameter((previousValue) => previousValue + 6);
   };
 
   const onClickPrevious = () => {
     if (offsetParameter <= 0) return;
-    setOffsetParameter((previousValue) => previousValue - 5);
-    setLimitParameter((previousValue) => previousValue - 5);
+    setOffsetParameter((previousValue) => previousValue - 6);
+    setLimitParameter((previousValue) => previousValue - 6);
   };
 
   useEffect(() => {
