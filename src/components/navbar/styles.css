@@ -1,0 +1,15 @@
+.nav-animation {
+    animation: nav-scroll linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+}
+
+@keyframes nav-scroll {
+
+    to {
+        background-color: rgba(65, 105, 225, .8);
+        backdrop-filter: blur(5px);
+        color: white;
+    }
+    
+}

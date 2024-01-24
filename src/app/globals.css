@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
+:root {
+  --primary-color: #4169E1;
 }
 
 body {
- 
+
+}
+
+.wrapper {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 0 6.5rem;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.form-experiencie::-webkit-scrollbar {
+  display: none;
 }
