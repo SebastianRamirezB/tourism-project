@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { locations } from '@/data/dataLocations';
 import { experienceCreationFormValidator } from '@/helpers/form-validation-experience-creation';
 import { getCookie } from 'cookies-next';
+import { toast } from 'sonner';
 
 export const ExperienceUpdateForm = ({ id }) => {
   const router = useRouter();
@@ -57,9 +58,17 @@ export const ExperienceUpdateForm = ({ id }) => {
     });
   };
 
-  const updateExperience = async (event) => {
+  const onSubmitExperience = (event) => {
     event.preventDefault();
+    toast.promise(updateExperience, {
+      loading: 'Actualizando...',
+      success: 'Su experiencia ha sido actualizada',
+      error: 'Hubo un error al actualizar tu experiencia,  intenta de nuevo',
+      duration: 5000
+    });
+  };
 
+  const updateExperience = async () => {
     const isValidForm = experienceCreationFormValidator(title, description, email, tel, whatsappNumber, country, department, town, address);
     setErrorMessages(isValidForm.errorMessages);
 
@@ -119,7 +128,8 @@ export const ExperienceUpdateForm = ({ id }) => {
   }, []);
 
   return (
-        <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={updateExperience} >
+        <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={onSubmitExperience}
+         >
             {
                 errorMessages.length !== 0 && errorMessages.map(error => {
                   return (
@@ -239,7 +249,7 @@ export const ExperienceUpdateForm = ({ id }) => {
                                 htmlFor="country"
                                 className="block text-2xl font-medium  text-gray-900"
                             >
-                                 País
+                                País
                             </label>
                             <div className="mt-2">
                                 <select

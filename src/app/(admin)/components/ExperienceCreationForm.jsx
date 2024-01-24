@@ -8,6 +8,7 @@ import { experienceCreationFormValidator } from '@/helpers/form-validation-exper
 import { locations } from '@/data/dataLocations';
 import { useImageUpload } from '@/hooks/useImageUpload';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export const ExperienceCreationForm = () => {
   const router = useRouter();
@@ -70,14 +71,22 @@ export const ExperienceCreationForm = () => {
     }
   };
 
-  const createExperience = async (event) => {
+  const onSubmitExperience = (event) => {
     event.preventDefault();
-
     const isValidForm = experienceCreationFormValidator(title, description, email, tel, whatsappNumber, country, department, town, address);
     setErrorMessages(isValidForm.errorMessages);
 
     if (!isValidForm.isValid) return;
 
+    toast.promise(createExperience, {
+      loading: 'Creando...',
+      success: 'Su experiencia ha sido creada',
+      error: 'Hubo un error al crear tu experiencia,  intenta de nuevo',
+      duration: 5000
+    });
+  };
+
+  const createExperience = async () => {
     setLoadData(true);
 
     const token = getCookie('tourism-token');
@@ -92,7 +101,7 @@ export const ExperienceCreationForm = () => {
       return values.map(url => url.secureUrl);
     });
 
-    await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences`, {
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -121,6 +130,12 @@ export const ExperienceCreationForm = () => {
         images: urlImages
       })
     });
+
+    if (resp.status === 404) {
+      setLoadData(false);
+      throw new Error('Resource not found');
+    }
+
     router.refresh();
     localStorage.setItem('isModalActive', 'false');
     setLoadData(false);
@@ -135,7 +150,7 @@ export const ExperienceCreationForm = () => {
   }, [department]);
 
   return (
-    <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={createExperience} >
+    <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={onSubmitExperience} >
       {
         errorMessages.length !== 0 && errorMessages.map(error => {
           return (

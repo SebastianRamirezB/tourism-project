@@ -3,6 +3,7 @@ import { GridCards } from '@/components/ui/GridCards';
 import { Modal } from '@/components/ui/Modal';
 import { ExperienceCreationForm } from '../components/ExperienceCreationForm';
 import { cookies } from 'next/headers';
+import { Toaster } from 'sonner';
 async function getData () {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences?limit=20`, { cache: 'no-store' });
 
@@ -36,7 +37,15 @@ export default async function DashboardPage () {
            content={<GridCards isModifiable data={dataUser} />}
         />
       </main>
-
+      <Toaster
+        position='top-right'
+        closeButton
+        visibleToasts={1}
+        richColors
+        toastOptions={{
+          style: { fontSize: '18px' }
+        }}
+       />
     </div>
   );
 }

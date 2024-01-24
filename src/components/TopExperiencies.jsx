@@ -17,8 +17,8 @@ export const TopExperiencies = () => {
 
   return (
         <BaseCardsContainer
-            title="Top ubicaciones para explorar"
-            description="Estos son algunos de los lugares más visitados en 2024"
+            title="Top experiencias inolvidables"
+            description="Estas son algunas de las experiencias  más valoradas en 2024"
             actionComponent={<MotionControlButtons actionFunction={moveSliderContent} />}
             content={<CarouselCardList sliderContentRef={sliderContentRef} />}
         />
