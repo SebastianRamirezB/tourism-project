@@ -15,14 +15,6 @@ export const registerFormValidator = (fullName, email, password, confirmPassword
     errorMessages.push('El campo de la contraseña no puede estar vacío');
   }
 
-  if (validator.isEmpty(confirmPassword)) {
-    errorMessages.push('El campo de la contraseña no puede estar vacío');
-  }
-
-  if (validator.isEmpty(confirmPassword)) {
-    errorMessages.push('El campo de la contraseña no puede estar vacío');
-  }
-
   if (!validator.equals(password, confirmPassword)) {
     errorMessages.push('Las contraseñas deben ser iguales');
   }
