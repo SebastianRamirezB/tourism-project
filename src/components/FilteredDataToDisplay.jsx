@@ -72,8 +72,8 @@ export const FilteredDataToDisplay = ({ data }) => {
         <>
             <SearchBar state={searchParameter} actionFunction={onSearchChanges} />
             <div className="flex w-full gap-[30px]">
-                <ComponentSelect title="categorias" options={['tour en bicicleta', 'senderismo', 'parapente', 'paseo a caballo', 'vida nocturna', 'motocross', 'tejo', 'otro']} actionFunction={setCategorySearch} />
-                <ComponentSelect title="ciudad" options={allTowns} actionFunction={setTownSearch} />
+                <ComponentSelect title="Categorías" options={['tour en bicicleta', 'senderismo', 'parapente', 'paseo a caballo', 'vida nocturna', 'motocross', 'tejo', 'otro']} actionFunction={setCategorySearch} />
+                <ComponentSelect title="Ciudad" options={allTowns} actionFunction={setTownSearch} />
 
             </div>
             <GridCards data={filteredData} />

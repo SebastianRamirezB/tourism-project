@@ -186,7 +186,7 @@ export const ExperienceUpdateForm = ({ id }) => {
                                 htmlFor="email"
                                 className="block text-2xl font-medium  text-gray-900"
                             >
-                                Email address
+                                Email
                             </label>
                             <div className="mt-2">
                                 <input
@@ -239,7 +239,7 @@ export const ExperienceUpdateForm = ({ id }) => {
                                 htmlFor="country"
                                 className="block text-2xl font-medium  text-gray-900"
                             >
-                                Pais
+                                 País
                             </label>
                             <div className="mt-2">
                                 <select
