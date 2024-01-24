@@ -60,6 +60,11 @@ export const ExperienceUpdateForm = ({ id }) => {
 
   const onSubmitExperience = (event) => {
     event.preventDefault();
+    const isValidForm = experienceCreationFormValidator(title, description, email, tel, whatsappNumber, country, department, town, address);
+    setErrorMessages(isValidForm.errorMessages);
+
+    if (!isValidForm.isValid) return;
+
     toast.promise(updateExperience, {
       loading: 'Actualizando...',
       success: 'Su experiencia ha sido actualizada',
@@ -69,11 +74,6 @@ export const ExperienceUpdateForm = ({ id }) => {
   };
 
   const updateExperience = async () => {
-    const isValidForm = experienceCreationFormValidator(title, description, email, tel, whatsappNumber, country, department, town, address);
-    setErrorMessages(isValidForm.errorMessages);
-
-    if (!isValidForm.isValid) return;
-
     setLoadData(true);
 
     const token = getCookie('tourism-token');
@@ -130,15 +130,21 @@ export const ExperienceUpdateForm = ({ id }) => {
   return (
         <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={onSubmitExperience}
          >
-            {
-                errorMessages.length !== 0 && errorMessages.map(error => {
+          {
+          errorMessages.length !== 0 && (
+            <div className=" w-[400px] bg-red-100 rounded-3xl p-5">
+              {
+                errorMessages.map(error => {
                   return (
-                        <ul key={error}>
-                            <li>{error}</li>
-                        </ul>
+                    <ul key={error}>
+                      <li>{error}</li>
+                    </ul>
                   );
                 })
-            }
+              }
+            </div>
+          )
+        }
             <div className=" p-10 ">
                 <div className="border-b pb-12">
                     <h2 className="text-2xl font-semibold  text-gray-900">

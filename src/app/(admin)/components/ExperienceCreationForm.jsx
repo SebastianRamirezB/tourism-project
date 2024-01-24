@@ -152,14 +152,20 @@ export const ExperienceCreationForm = () => {
   return (
     <form className=" form-experiencie overflow-y-scroll h-full py-10" onSubmit={onSubmitExperience} >
       {
-        errorMessages.length !== 0 && errorMessages.map(error => {
-          return (
-            <ul key={error}>
-              <li>{error}</li>
-            </ul>
-          );
-        })
-      }
+          errorMessages.length !== 0 && (
+            <div className=" w-[400px] bg-red-100 rounded-3xl p-5">
+              {
+                errorMessages.map(error => {
+                  return (
+                    <ul key={error}>
+                      <li>{error}</li>
+                    </ul>
+                  );
+                })
+              }
+            </div>
+          )
+        }
       <div className=" p-10 ">
         <div className="border-b pb-12">
           <h2 className="text-2xl font-semibold  text-gray-900">
@@ -581,7 +587,7 @@ export const ExperienceCreationForm = () => {
               </div>
             </fieldset>
 
-            <input type="file" onChange={uploadedImageManager} multiple />
+            <input type="file" onChange={uploadedImageManager} multiple/>
 
           </div>
         </div>
