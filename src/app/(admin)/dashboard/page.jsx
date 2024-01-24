@@ -4,7 +4,7 @@ import { Modal } from '@/components/ui/Modal';
 import { ExperienceCreationForm } from '../components/ExperienceCreationForm';
 import { cookies } from 'next/headers';
 async function getData () {
-  const res = await fetch('http://localhost:3001/api/experiences?limit=20', { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences?limit=20`, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');

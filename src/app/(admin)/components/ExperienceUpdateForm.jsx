@@ -69,7 +69,7 @@ export const ExperienceUpdateForm = ({ id }) => {
 
     const token = getCookie('tourism-token');
 
-    const data = await fetch(`http://localhost:3001/api/experiences/${id}`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export const ExperienceUpdateForm = ({ id }) => {
   }, [department]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/experiences/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExperience(data);

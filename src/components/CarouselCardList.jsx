@@ -1,7 +1,7 @@
 import { CarouselCard } from './CarouselCard';
 
 async function getData () {
-  const res = await fetch('http://localhost:3001/api/experiences?limit=20');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences?limit=20`);
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');

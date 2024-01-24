@@ -31,7 +31,7 @@ export const RegisterForm = () => {
 
     if (!isValidForm.isValid) return;
 
-    const data = await fetch('http://localhost:3001/api/auth/register', {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

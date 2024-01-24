@@ -5,7 +5,7 @@ import { ExperienceSummary } from '@/components/ExperienceSummary';
 import { Hero } from '@/components/Hero';
 
 async function getData (slug) {
-  const res = await fetch(`http://localhost:3001/api/experiences/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences/${slug}`, {
     cache: 'no-store'
   });
 

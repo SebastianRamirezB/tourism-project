@@ -55,7 +55,7 @@ export const ExperienceCreationForm = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const resp = await fetch('http://localhost:3001/api/files/experience', {
+      const resp = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/files/experience`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -92,7 +92,7 @@ export const ExperienceCreationForm = () => {
       return values.map(url => url.secureUrl);
     });
 
-    await fetch('http://localhost:3001/api/experiences', {
+    await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

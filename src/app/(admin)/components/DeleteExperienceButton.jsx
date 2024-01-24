@@ -9,7 +9,7 @@ export const DeleteExperienceButton = ({ id }) => {
   const deleteExperience = async () => {
     const token = getCookie('tourism-token');
 
-    await fetch(`http://localhost:3001/api/experiences/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

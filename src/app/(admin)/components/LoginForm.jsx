@@ -28,7 +28,7 @@ export const LoginForm = () => {
 
     if (!isValidForm.isValid) return;
 
-    const data = await fetch('http://localhost:3001/api/auth/login', {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

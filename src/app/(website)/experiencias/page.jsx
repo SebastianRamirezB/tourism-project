@@ -2,7 +2,7 @@ import { FilteredDataToDisplay } from '@/components/FilteredDataToDisplay';
 import { Hero } from '@/components/Hero';
 
 async function getData () {
-  const res = await fetch('http://localhost:3001/api/experiences?limit=20', { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/experiences?limit=20`, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
