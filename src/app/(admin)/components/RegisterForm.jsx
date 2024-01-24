@@ -63,15 +63,18 @@ export const RegisterForm = () => {
 
   return (
     <form className="flex flex-col gap-8" onSubmit={register}>
-      {
-        errorMessages.length !== 0 && errorMessages.map((error, index) => {
-          return (
-            <ul key={index}>
-              <li>{error}</li>
-            </ul>
-          );
-        })
-      }
+
+      <div className=" w-[400px] bg-red-100 rounded-3xl p-5">
+        {
+          errorMessages.length !== 0 && errorMessages.map((error, index) => {
+            return (
+              <ul key={index}>
+                <li>{error}</li>
+              </ul>
+            );
+          })
+        }
+      </div>
       <input
         name="fullName"
         className=" text-xl py-6 px-3 border-b border-[#B4B4B4] outline-none"
