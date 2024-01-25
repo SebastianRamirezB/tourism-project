@@ -15,4 +15,6 @@
 3. Clonar el archivo ```.env.template```y renombrarlo a ```.env```
 4. Cambiar las variables de entorno
 
-5. Ejecutar: ```npm run dev```para levantar la aplicación
+5. Ejecutar: ```npm run dev``` para levantar la aplicación
+
+## Link del proyecto desplegado [Ver.](https://tourism-project-five.vercel.app/)
